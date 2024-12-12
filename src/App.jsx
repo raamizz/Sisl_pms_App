@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Navigation from "./components/Header/Navigation";
 import StatusCard from "./components/Header/StatusCard";
 import RecentTask from "./components/RecentTasks/RecentTask";
-// import ReportsSection from './components/ReportsSection';
+import ReportsSection from "./components/Reports/ReportsSection";
 import { calculateStats } from "./utils/helpers";
 import { maintenanceData } from "./data/maintenanceData";
 import "./index.css";
@@ -43,7 +43,7 @@ const App = () => {
             </>
           }
         />
-        {/* <Route path="/reports" element={<ReportsSection data={maintenanceData} />} /> */}
+        <Route path="/reports" element={<ReportsSection data={maintenanceData} />} />
       </Routes>
       <Navigation />
     </Router>
