@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { ChevronLeft, ChevronRight, AlertTriangle, SlidersHorizontal, Info } from 'lucide-react';
-import { triggerHapticFeedback } from '../utils/hapticFeedback.js';
+import { triggerHapticFeedback } from '../../utils/haptics';
 
 // Helper function to calculate days overdue
 const calculateDaysOverdue = (lastCompletionDate, interval, currentDate = new Date()) => {

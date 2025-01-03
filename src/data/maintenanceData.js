@@ -43,7 +43,7 @@ export const maintenanceData = {
             status: "Overdue",
             actualStatus: "Overdue",
             eqId: "F1E51795-AB8F-4195-B612-967B14ACF5DA",
-            type: "critical"
+            type: "noncritical"
           },
           {
             id: "PHR-1393",
@@ -83,7 +83,7 @@ export const maintenanceData = {
             status: "Overdue",
             actualStatus: "Overdue",
             eqId: "38FC74B0-44EF-4D68-B301-E026C152CBE5",
-            type: "critical"
+            type: "postponed"
           },
           {
             id: "PHR-1395",
@@ -123,7 +123,7 @@ export const maintenanceData = {
             status: "Overdue",
             actualStatus: "Overdue",
             eqId: "FF66B282-8FD0-42C5-97EE-E17B185E8446",
-            type: "critical"
+            type: "postponed"
           },
           {
             id: "PHR-1053",

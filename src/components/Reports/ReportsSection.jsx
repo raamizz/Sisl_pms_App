@@ -4,7 +4,7 @@ import OverdueByDept from "../Charts/OverdueByDept";
 import TasksByStatus from "../Charts/TasksByStatus";
 import TasksByInterval from "../Charts/TasksByInterval";
 import TasksByDepartment from "../Charts/TasksByDepartment";
-// import TopOverdueComponens
+import MaintenanceAnalytics from "../Charts/TopOverdueComponent";
 import OverdueByCompetency from "../Charts/OverdueByCompetency";
 import TaskStatusTimeline from "../Charts/TaskStatusTimeline";
 import AvgOverdueByDepartment from "../Charts/AvgOverdueByDepartment";
@@ -19,7 +19,7 @@ const ReportsSection = ({ data }) => {
     {
       title: "Component Task Status",
       description: "See which parts need immediate attention",
-      // component: <TopOverdueComponents data={data} />,
+      component: <MaintenanceAnalytics data={data} />,
     },
     {
       title: "Overdue Tasks by Department",
@@ -88,13 +88,11 @@ const ReportsSection = ({ data }) => {
   };
 
   return (
-    <div className="mt-8 px-4">
+    <div className="mt-8 px-1">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
           Reports Dashboard
         </h2>
-
-        {/* Dropdown Menu */}
         <div className="relative mb-4">
           <button
             onClick={toggleDropdown}
@@ -104,9 +102,9 @@ const ReportsSection = ({ data }) => {
               <div className="font-semibold text-lg">
                 {reports[currentReportIndex].title}
               </div>
-              <div className="text-gray-600">
+              {/* <div className="text-gray-600">
                 {reports[currentReportIndex].description}
-              </div>
+              </div> */}
             </div>
             <ChevronDown
               className={`w-6 h-6 transition-transform ${
@@ -116,17 +114,17 @@ const ReportsSection = ({ data }) => {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute z-10 w-full mt-2 bg-white border-2 border-gray-200 rounded-lg shadow-lg max-h-[60vh] overflow-y-auto">
+            <div className="absolute z-10 w-full mt-2 bg-gray-200 border-2 border-gray-200 rounded-lg shadow-lg max-h-[60vh] overflow-y-auto">
               {reports.map((report, index) => (
                 <button
                   key={index}
                   onClick={() => handleReportChange(index)}
                   className={`w-full p-4 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
-                    currentReportIndex === index ? "bg-blue-50" : ""
+                    currentReportIndex === index ? "bg-blue-100" : ""
                   }`}
                 >
                   <div className="font-semibold text-lg">{report.title}</div>
-                  <div className="text-gray-600">{report.description}</div>
+                  <div className="text-gray-600 ">{report.description}</div>
                 </button>
               ))}
             </div>
@@ -137,17 +135,17 @@ const ReportsSection = ({ data }) => {
         <div className="flex justify-between mb-4">
           <button
             onClick={() => navigateReport("prev")}
-            className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+            className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-gray-200 text-gray-700 hover:bg-gray-200 transition-colors"
           >
-            <ChevronLeft className="w-4 h-4 mr-1" />
+            <ChevronLeft className="w-4 h-4 " />
             Previous Report
           </button>
           <button
             onClick={() => navigateReport("next")}
-            className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+            className="flex items-center px-3 py-2 text-sm font-medium rounded-md bg-gray-200 text-gray-700 hover:bg-gray-200 transition-colors"
           >
             Next Report
-            <ChevronRight className="w-4 h-4 ml-1" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
         <div>{reports[currentReportIndex].component}</div>

@@ -5,6 +5,7 @@ import Navigation from "./components/Header/Navigation";
 import StatusCard from "./components/Header/StatusCard";
 import RecentTask from "./components/RecentTasks/RecentTask";
 import ReportsSection from "./components/Reports/ReportsSection";
+import Graphs from "./components/Piechart/Graphs";
 import { calculateStats } from "./utils/helpers";
 import { maintenanceData } from "./data/maintenanceData";
 import "./index.css";
@@ -35,6 +36,7 @@ const App = () => {
           element={
             <>
               <StatusCard stats={stats} />
+              <Graphs data={maintenanceData}/>
               <RecentTask
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}

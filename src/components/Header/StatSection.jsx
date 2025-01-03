@@ -27,10 +27,10 @@ const StatSection = ({ data, title, dotColor, type }) => {
         <div className={`w-1.5 h-1.5 rounded-full ${dotColor}`}></div>
         <span className="font-medium text-gray-800 text-xs sm:text-sm truncate">{title}</span>
       </div>
-      <div className="flex gap-2 sm:gap-3 items-end">
+      <div className="flex ml-3 sm:gap-3 justify-start gap-2 items-end">
         <div>
           <div className={`text-[10px] sm:text-xs mb-0.5 ${getTextColor(type, 'overdue')}`}>
-            {type === 'postponed' ? 'REG' : 'OVER'}
+            {type === 'postponed' ? 'REG' : 'OVERDUE'}
           </div>
           <div className={`text-base sm:text-lg font-bold ${getTextColor(type, 'overdue')}`}>
             {numbers.first}
