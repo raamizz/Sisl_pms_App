@@ -16,11 +16,11 @@ const ReportsSection = ({ data }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const reports = [
-    {
-      title: "Component Task Status",
-      description: "See which parts need immediate attention",
-      component: <MaintenanceAnalytics data={data} />,
-    },
+    // {
+    //   title: "Component Task Status",
+    //   description: "See which parts need immediate attention",
+    //   component: <MaintenanceAnalytics data={data} />,
+    // },
     {
       title: "Overdue Tasks by Department",
       description: "See which departments have tasks that need attention",
@@ -46,11 +46,11 @@ const ReportsSection = ({ data }) => {
       description: "View tasks based on required skill levels",
       component: <OverdueByCompetency data={data} />,
     },
-    {
-      title: "Task Status Timeline",
-      description: "See how tasks progress over time",
-      component: <TaskStatusTimeline data={data} />,
-    },
+    // {
+    //   title: "Task Status Timeline",
+    //   description: "See how tasks progress over time",
+    //   component: <TaskStatusTimeline data={data} />,
+    // },
     {
       title: "Average Overdue Days by Department",
       description: "Check how long tasks are overdue in each department",

@@ -199,7 +199,7 @@ const CustomLegend = ({ payload, pieData }) => (
   </div>
 );
 
-// Main Component
+// Main Component  
 const MaintenanceAnalytics = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
@@ -251,6 +251,7 @@ const MaintenanceAnalytics = ({ data }) => {
       };
     })
     .sort((a, b) => b.priorityScore - a.priorityScore);
+
 
   // Handle component click
   const handleComponentClick = (component) => {
@@ -330,11 +331,11 @@ const MaintenanceAnalytics = ({ data }) => {
 
       {/* Filters */}
       <div className="flex gap-2 justify-end">
-          <IconButton 
+          {/* <IconButton 
             icon={Info} 
             onClick={() => setShowPriorityInfo(true)} 
             label="Priority Info"
-          />
+          /> */}
           <IconButton 
             icon={SlidersHorizontal} 
             onClick={() => setShowFilters(!showFilters)} 
@@ -344,7 +345,7 @@ const MaintenanceAnalytics = ({ data }) => {
       <div className="space-y-4">
         {showFilters && (
           <div className="bg-white rounded-lg shadow p-4 space-y-4">
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Risk Level</label>
               <div className="flex flex-wrap gap-2">
                 {['all', 'high', 'medium', 'low'].map((level) => (
@@ -360,9 +361,9 @@ const MaintenanceAnalytics = ({ data }) => {
                   </FilterButton>
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Priority Level</label>
               <div className="flex flex-wrap gap-2">
                 {['all', 'high', 'medium', 'low'].map((level) => (
@@ -378,7 +379,7 @@ const MaintenanceAnalytics = ({ data }) => {
                   </FilterButton>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Number of Tasks</label>

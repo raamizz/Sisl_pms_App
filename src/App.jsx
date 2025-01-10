@@ -23,6 +23,8 @@ const App = () => {
       : task.status === "Planned"
   );
 
+  console.log(selectedVessel,"SELECTEDDDD")
+
   return (
     <Router>
       <Header

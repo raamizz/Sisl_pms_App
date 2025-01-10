@@ -3,7 +3,7 @@ import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Responsive
 import { ChevronDown } from 'lucide-react';
 import { triggerHapticFeedback } from '../../utils/haptics';
 
-// Helper function for interval mapping
+
 const getIntervalOrder = (interval) => {
   const orderMap = {
     '1 Week': 1,
@@ -13,8 +13,6 @@ const getIntervalOrder = (interval) => {
   };
   return orderMap[interval] || 0;
 };
-
-// Custom Select Component
 const Select = ({ label, value, onChange, options }) => {
   return (
     <div className="space-y-1">
@@ -44,7 +42,7 @@ function TasksByInterval({ data }) {
   const [intervalFilter, setIntervalFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
 
-  // Process and group tasks
+  
   const processedTasks = data.vessels[0].tasks.reduce((acc, task) => {
     if (!acc[task.interval]) {
       acc[task.interval] = {
@@ -66,7 +64,7 @@ function TasksByInterval({ data }) {
     return acc;
   }, {});
 
-  // Prepare scatter plot data
+
   const scatterData = Object.entries(processedTasks)
     .filter(([interval]) => intervalFilter === 'all' || interval === intervalFilter)
     .map(([interval, stats]) => {

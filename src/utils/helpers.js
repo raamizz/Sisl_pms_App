@@ -7,7 +7,6 @@ export const calculateStats = (tasks) => {
   
     tasks.forEach(task => {
       const isCritical = task.cc === 1;
-      
       if (task.status === "Overdue") {
         if (isCritical) {
           stats.critical.overdue++;
@@ -21,7 +20,6 @@ export const calculateStats = (tasks) => {
           stats.nonCritical.due++;
         }
       }
-  
       if (task.actualStatus === "Postponed") {
         if (task.type === "drydock") {
           stats.postponed.drydock++;
