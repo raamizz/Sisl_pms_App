@@ -1,5 +1,14 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { Doughnut } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+// Register Chart.js components
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const COLORS = ['#ff4d4f', '#1890ff', '#ffc107'];
 
@@ -7,18 +16,31 @@ function TasksDashboard({ data }) {
   console.log(data, "DATATATATATAT");
 
   const processChartData = (tasks) => {
-    if (!tasks || tasks.length === 0) return []; 
+    if (!tasks || tasks.length === 0) return { labels: [], datasets: [] };
+
     const statusCounts = tasks.reduce((acc, task) => {
       acc[task.status] = (acc[task.status] || 0) + 1;
       return acc;
     }, {});
-    return Object.entries(statusCounts).map(([name, value]) => ({
-      name,
-      value,
-    }));
+
+    const labels = Object.keys(statusCounts);
+    const values = Object.values(statusCounts);
+
+    return {
+      labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor: COLORS,
+          borderWidth: 1,
+        },
+      ],
+    };
   };
+
   const criticalTasks = data.vessels[0]?.tasks.filter(task => task.type === 'critical');
-  const nonCriticalTasks = data.vessels[0]?.tasks.filter(task => task.type === 'noncritical' );
+  console.log(criticalTasks, "Criticalll");
+  const nonCriticalTasks = data.vessels[0]?.tasks.filter(task => task.type === 'noncritical');
   const postponedTasks = data.vessels[0]?.tasks.filter(task => task.type === 'postponed');
 
   const charts = [
@@ -38,27 +60,15 @@ function TasksDashboard({ data }) {
             {chart.title}
           </h3>
           <div className="w-full h-40 md:h-60">
-            <ResponsiveContainer>
-              <PieChart>
-                <Pie
-                  data={chart.data}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={50}
-                  innerRadius={30}
-                  label
-                >
-                  {chart.data.map((entry, idx) => (
-                    <Cell
-                      key={`cell-${idx}`}
-                      fill={COLORS[idx % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
+            <Doughnut data={chart.data} options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom',
+                },
+              },
+            }} />
           </div>
         </div>
       ))}
@@ -67,3 +77,69 @@ function TasksDashboard({ data }) {
 }
 
 export default TasksDashboard;
+
+
+
+
+// import React from 'react';
+// import { Doughnut } from 'react-chartjs-2';
+// import {
+//   Chart as ChartJS,
+//   ArcElement,
+//   Tooltip,
+//   Legend,
+// } from 'chart.js';
+
+// // Register required elements
+// ChartJS.register(ArcElement, Tooltip, Legend);
+
+// const data = {
+//   labels: ['Overdue', 'Planned'],
+//   datasets: [
+//     {
+//       data: [17, 5], // Example values
+//       backgroundColor: ['#FF6384', '#36A2EB'],
+//       hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+//       borderColor: '#fff',
+//       borderWidth: 2,
+//     },
+//   ],
+// };
+
+// const options = {
+//   responsive: true,
+//   maintainAspectRatio: false,
+//   plugins: {
+//     legend: {
+//       display: true,
+//       position: 'bottom',
+//       labels: {
+//         font: {
+//           size: 12,
+//         },
+//       },
+//     },
+//     tooltip: {
+//       callbacks: {
+//         label: function (context) {
+//           const label = context.label || '';
+//           const value = context.raw || '';
+//           return `${label}: ${value}`;
+//         },
+//       },
+//     },
+//   },
+//   layout: {
+//     padding: 20,
+//   },
+// };
+
+// const MyDoughnutChart = () => {
+//   return (
+//     <div style={{ width: '100%', height: '300px' }}>
+//       <Doughnut data={data} options={options} />
+//     </div>
+//   );
+// };
+
+// export default MyDoughnutChart;

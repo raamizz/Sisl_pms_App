@@ -1,7 +1,12 @@
 import React from "react";
 import StatSection from "./StatSection";
 
+
 const StatusCard = ({ stats }) => {
+
+  const data = stats;
+
+  console.log(data,"STATTSSSSSSSSSSSS")
   return (
     <div>
       <div className="-mt-12 px-3">
