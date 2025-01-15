@@ -15,6 +15,8 @@ const ReportsSection = ({ data }) => {
   const [currentReportIndex, setCurrentReportIndex] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+
+  console.log(data, "LLLLL");
   const reports = [
     // {
     //   title: "Component Task Status",

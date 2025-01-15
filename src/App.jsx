@@ -22,9 +22,6 @@ const App = () => {
       ? task.status === "Overdue"
       : task.status === "Planned"
   );
-
-  console.log(selectedVessel,"SELECTEDDDD")
-
   return (
     <Router>
       <Header
