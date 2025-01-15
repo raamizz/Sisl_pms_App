@@ -16,7 +16,7 @@ const getIntervalOrder = (interval) => {
 const Select = ({ label, value, onChange, options }) => {
   return (
     <div className="space-y-1">
-      <label className="text-sm font-medium text-gray-700">{label}</label>
+      <label className="text-sm  font-medium text-gray-700">{label}</label>
       <div className="relative">
         <select
           value={value}
@@ -24,7 +24,7 @@ const Select = ({ label, value, onChange, options }) => {
             triggerHapticFeedback(50);
             onChange(e.target.value);
           }}
-          className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-3 pr-10 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 bg-white py-2 px-1 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -32,7 +32,7 @@ const Select = ({ label, value, onChange, options }) => {
             </option>
           ))}
         </select>
-        <ChevronDown className="absolute right-2 top-2.5 h-5 w-5 text-gray-400" />
+        {/* <ChevronDown className="absolute right-2 top-2.5 h-5 w-5 text-gray-400" /> */}
       </div>
     </div>
   );
